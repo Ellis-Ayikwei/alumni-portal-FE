@@ -53,11 +53,11 @@ The system allows for the creation, deletion, updating, and viewing of the follo
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/alumni-portal-frontend.git
+    git clone https://github.com/Ellis-Ayikwei/alumni-portal-FE.git
     ```
 2. Navigate to the project directory:
     ```bash
-    cd alumni-portal-frontend
+    cd alumni-portal-FE
     ```
 3. Install dependencies:
     ```bash
