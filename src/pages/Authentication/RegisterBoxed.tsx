@@ -6,11 +6,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { eye } from 'react-icons-kit/feather/eye';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import Select from 'react-select';
-import axiosInstance from '../../helper/axiosInstance';
+import authAxiosInstance from '../../helper/authAxiosInstance';
 import showMessage from '../../helper/showMessage';
 import { IRootState } from '../../store';
 import { setPageTitle, toggleRTL } from '../../store/themeConfigSlice';
-import sanitizeHtml from 'sanitize-html';
 
 const RegisterBoxed = () => {
     const dispatch = useDispatch();
@@ -49,7 +48,7 @@ const RegisterBoxed = () => {
         navigate('/');
     };
 
-    function changeValue(e: ChangeEvent<HTMLInputElement>): void {
+    function changeValue(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
         const { id, value } = e.target;
         setParams((prevParams: any) => ({
             ...prevParams,
@@ -85,7 +84,7 @@ const RegisterBoxed = () => {
         const payload = JSON.stringify({ ...params });
 
         try {
-            const response = await axiosInstance.post('/users', payload);
+            const response = await authAxiosInstance.post('/register', payload);
             if (response.status === 201) {
                 showMessage(`registered successfully.`, 'success');
                 setParams({});
@@ -303,4 +302,3 @@ const RegisterBoxed = () => {
 };
 
 export default RegisterBoxed;
-
